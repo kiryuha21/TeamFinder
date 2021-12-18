@@ -20,10 +20,11 @@ class GamesController < ApplicationController
   # POST /games or /games.json
   def create
     @game = Game.new(game_params)
+    @game.creator = @current_user.nickname
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to game_url(@game), notice: 'Game was successfully created.' }
+        format.html { redirect_to game_url(@game), notice: 'Игра была успешно добавлена.' }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +65,6 @@ class GamesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def game_params
-    params.require(:game).permit(:name, :picture_ref)
+    params.require(:game).permit(:name, :creator, :image)
   end
 end

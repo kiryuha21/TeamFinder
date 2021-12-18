@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_12_18_181849) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
-    t.string "picture_ref"
+    t.string "creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_games_on_name", unique: true
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2021_12_18_181849) do
     t.string "nickname"
     t.string "password_digest"
     t.datetime "last_login", precision: 6
-    t.string "avatar_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["nickname"], name: "index_users_on_nickname", unique: true

@@ -11,18 +11,25 @@
     </div>
   <% end %>
 
-  <div class="mb-3" style="width: 200px;">
+  <div class="mb-3" style="width: 350px;">
     <%= form.label :name, 'Название игры', style: "display: block" %>
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="mb-3" style="width: 200px;">
-    <%= form.label :picture_ref, 'Изображение игры', style: "display: block;" %>
-    <input type="file" id="picture_ref" class="form-control-file">
+  <div class="mb-3" style="width: 350px;">
+    <%= form.label :image, 'Изображение игры', style: "display: block;" %>
+    <% if game.image.attached? %>
+      <%= image_tag game.image, style: 'width: 200px; display: block;' %>
+    <% end %>
+    <%= form.file_field :image, class: 'form-control', accept: 'image/jpg, image/png, image/jpeg' %>
     <div class="form-text" style="width: 300px">в противном случае будет использовано изображение по умолчанию</div>
   </div>
 
   <div>
-    <%= form.submit %>
+    <% if action_name == 'new' %>
+      <%= form.submit 'Добавить игру', class:'btn btn-success' %>
+    <% else %>
+      <%= form.submit 'Подтвердить изменения', class:'btn btn-success' %>
+    <% end %>
   </div>
 <% end %>

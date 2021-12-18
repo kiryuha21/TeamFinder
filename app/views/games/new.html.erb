@@ -19,14 +19,6 @@
     }
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("picture_ref").addEventListener("change", function() {
-          console.log(this.files);
-      });
-  })
-</script>
-
 <main>
 
   <h1>Добавление игры</h1>
@@ -36,7 +28,7 @@
   <br>
 
   <div>
-    <%= link_to "Back to games", games_path %>
+    <%= link_to "Вернуться к списку игр", games_path %>
   </div>
 
 </main>

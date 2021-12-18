@@ -1,11 +1,5 @@
 class Game < ApplicationRecord
-  validates_presence_of :name
+  has_one_attached :image
 
-  before_save :default_values
-
-  private
-
-  def default_values
-    self.picture_ref ||= 'default_avatar.jpg'
-  end
+  validates_presence_of :name, :creator
 end

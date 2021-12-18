@@ -1,12 +1,20 @@
 <div id="<%= dom_id game %>">
   <p>
-    <strong>Name:</strong>
+    <strong>Создана пользователем:</strong>
+    <%= game.creator %>
+  </p>
+  <p>
+    <strong>Название:</strong>
     <%= game.name %>
   </p>
 
   <p>
-    <strong>Picture ref:</strong>
-    <%= game.picture_ref %>
+    <strong>Изображение:</strong> <br>
+    <% if game.image.attached? %>
+      <%= image_tag game.image, style: 'width: 500px;'%>
+    <% else %>
+      <%= image_tag 'default.jpg', style: 'width: 500px;' %>
+    <% end %>
   </p>
 
 </div>

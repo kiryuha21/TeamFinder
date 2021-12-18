@@ -8,7 +8,7 @@
     }
 
     .main-part {
-        height: 450px;
+        height: 550px;
     }
 
     .desc-part {
@@ -61,15 +61,20 @@
     }
 </style>
 
-<p style="color: green"><%= notice %></p>
-
 <main>
+
+  <p style="color: green"><%= notice %></p>
+
   <h2>Список игр для поиска товарищей</h2>
 
   <div id="games" class="d-flex flex-column bd-highlight mb-3">
     <% @games.each do |game| %>
       <div class="main-part">
-        <%= image_tag game.picture_ref, class: 'game' %>
+        <% if game.image.attached? %>
+          <%= image_tag game.image, class: 'game' %>
+        <% else %>
+          <%= image_tag 'default.jpg', class: 'game' %>
+        <% end %>
         <div class="desc-part">
           <div class="desc-text">
             <%= game.name %>
