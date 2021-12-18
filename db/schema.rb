@@ -10,35 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_18_110540) do
-
+ActiveRecord::Schema.define(version: 20_211_218_110_540) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "games", force: :cascade do |t|
-    t.string "name"
-    t.string "picture_ref"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_games_on_name", unique: true
+  create_table 'games', force: :cascade do |t|
+    t.string 'name'
+    t.string 'picture_ref'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['name'], name: 'index_games_on_name', unique: true
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.string "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'posts', force: :cascade do |t|
+    t.string 'title'
+    t.string 'body'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "real_name"
-    t.string "nickname"
-    t.string "password_digest"
-    t.datetime "last_login", precision: 6
-    t.string "avatar_link"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["nickname"], name: "index_users_on_nickname", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'real_name'
+    t.string 'nickname'
+    t.string 'password_digest'
+    t.datetime 'last_login', precision: 6
+    t.string 'avatar_link'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['nickname'], name: 'index_users_on_nickname', unique: true
   end
-
 end
