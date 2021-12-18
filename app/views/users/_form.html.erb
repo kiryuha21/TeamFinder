@@ -1,0 +1,44 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group" style="width: 200px;">
+    <%= form.label :real_name, 'Ваше настоящее имя', style: "display: block" %>
+    <%= form.text_field :real_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group" style="width: 200px;">
+    <%= form.label :nickname, 'Ваш никнейм на сайте', style: "display: block" %>
+    <%= form.text_field :nickname, class: "form-control" %>
+  </div>
+
+  <div class="form-group" style="width: 200px;">
+    <%= form.label :password, 'Введите пароль', style: "display: block" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group" style="width: 200px;">
+    <%= form.label :password_conf, 'Подтвердите пароль', style: "display: block" %>
+    <%= form.password_field :password_conf, class: "form-control" %>
+  </div>
+
+  <br>
+
+  <div>
+    <% if action_name == 'login' %>
+      <%= form.submit 'Создать пользователя', class:'btn btn-success' %>
+    <% else %>
+      <%= form.submit 'Подвердить изменения', class:'btn btn-success' %>
+    <% end %>
+  </div>
+<% end %>

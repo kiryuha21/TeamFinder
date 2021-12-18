@@ -1,0 +1,38 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+    main {
+        margin: 20px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+    body {
+        background: url(<%= image_path 'form4.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
+<main>
+
+  <h1>Редактирование пользователя</h1>
+
+  <br>
+
+  <% if @current_user.nickname == @user.nickname %>
+    <%= render "form", user: @user %>
+  <% else %>
+    <div class="alert alert-danger" style="width: fit-content">Вы не можете редактировать чужой аккаунт</div>
+  <% end %>
+
+  <br>
+
+  <div>
+    <h5>
+      <%= link_to "Вернуться к информации о пользователе", @user, style: 'color: #E1C35A' %> <br> <br>
+      <%= link_to "Вернуться к списку пользователей", users_path, style: 'color: #E1C35A' %>
+    </h5>
+  </div>
+
+</main>

@@ -1,0 +1,36 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+    main {
+        margin: 20px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+    body {
+        background: url(<%= image_path 'form4.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
+<main>
+
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @user %>
+
+  <div>
+    <h5>
+      <%= link_to "Отредактировать данные", edit_user_path(@user), style: 'color: #E1C35A' %> |
+      <%= link_to "Вернуться к списку", users_path, style: 'color: #E1C35A' %>
+    </h5>
+
+    <br>
+
+    <% if @current_user.nickname == @user.nickname %>
+      <%= button_to "Удалить свой аккаунт", user_path(@user), method: :delete, class: 'btn btn-outline-danger' %>
+    <% end %>
+  </div>
+
+</main>

@@ -1,0 +1,89 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+    main {
+        margin: 20px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    .main-part {
+        height: 450px;
+    }
+
+    .desc-part {
+        position: relative;
+        background-color: #B1560F;
+        height: 200px;
+        width: 500px;
+        top: -100px;
+    }
+
+    .desc-text {
+        position: static;
+        text-align: center;
+        padding: 120px 20%;
+        font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif, sans-serif;
+        font-size: xx-large;
+        color: white;
+    }
+
+    .link-part {
+        position: relative;
+        top: -50px;
+        font-size: x-large;
+        width: 500px;
+    }
+
+    .link-text {
+        position: static;
+        text-align: center;
+    }
+
+    .game {
+        width: 500px;
+        border-radius: 100px;
+        z-index: 2500;
+        position: relative;
+    }
+
+    body {
+        background: url(<%= image_path 'game_index.jpg' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body:after{
+        display:none;
+        content: url(<%= image_path 'game_index.jpg' %>);
+    }
+</style>
+
+<p style="color: green"><%= notice %></p>
+
+<main>
+  <h2>Список игр для поиска товарищей</h2>
+
+  <div id="games" class="d-flex flex-column bd-highlight mb-3">
+    <% @games.each do |game| %>
+      <div class="main-part">
+        <%= image_tag game.picture_ref, class: 'game' %>
+        <div class="desc-part">
+          <div class="desc-text">
+            <%= game.name %>
+          </div>
+        </div>
+      </div>
+      <div class="link-part">
+        <div class="link-text">
+          <%= link_to "Информация об игре", game %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if signed_in? %>
+    <h4 style="width: 500px; text-align: center"><%= link_to 'Добавить новую игру', new_game_path %></h4>
+  <% end %>
+</main>

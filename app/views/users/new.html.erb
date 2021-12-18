@@ -1,0 +1,34 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    main {
+        margin: 20px;
+
+        font-family: 'Noto Sans', sans-serif;
+    }
+    body {
+        background: url(<%= image_path 'form4.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body:after{
+        display:none;
+        content: url(<%= image_path 'form4.png' %>);
+    }
+</style>
+
+<main>
+
+  <h1>Регистрация</h1>
+
+  <%= render "form", user: @user %>
+
+  <br>
+
+  <div>
+    <%= link_to "Вернуться на главную страницу", users_path %>
+  </div>
+
+</main>

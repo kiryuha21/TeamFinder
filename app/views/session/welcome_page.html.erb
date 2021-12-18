@@ -1,0 +1,51 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        background-image: url(<%= image_path 'main_bg6.png' %>);
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    body:after{
+        display:none;
+        content: url(<%= image_path 'main_bg6.png' %>);
+    }
+
+    header {
+        animation: fadein 2s;
+    }
+
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    h1 {
+        font-family: 'Rakkas', cursive;
+    }
+
+    h3 {
+        font-family: 'Ubuntu', sans-serif;
+    }
+</style>
+
+<header style="text-align: center; margin-top: 250px" class="welcome">
+  <h1>TeamFinder</h1>
+  <h3>Современный сервис для поиска товарищей по игре</h3> <br>
+  <% if !signed_in? %>
+    <%= link_to "Войти", session_login_path, class:"btn btn-primary btn-lg" %> <br> <br>
+    <%= link_to "Зарегистрироваться", new_user_path, class: 'btn btn-success btn-lg' %>
+  <% else %>
+    <%= link_to "К играм!", games_path, class:'btn btn-success btn-lg' %>
+  <% end %>
+</header>

@@ -1,0 +1,60 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+    main {
+        margin: 20px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+    body {
+        background: url(<%= image_path 'form4.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body:after{
+        display:none;
+        content: url(<%= image_path 'form4.png' %>);
+    }
+</style>
+
+<main>
+
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
+      <%= value %>
+    </div>
+    <br>
+  <% end %>
+
+  <h1>Авторизация</h1>
+
+  <h3>Войдите в свой аккаунт чтобы получить доступ к полному функционалу сайта</h3>
+
+  <%= form_with url: session_create_url do |form| %>
+    <div class="form-group" style="width: 200px;">
+      <%= form.label :user, "Никнейм" %> <br>
+      <%= form.text_field :user, placeholder: 'Papa_Mraka', class: 'form-control', required: true %>
+    </div>
+    <div class="form-group" style="width: 200px;">
+      <%= form.label :password, 'Пароль' %> <br>
+      <%= form.password_field :password, placeholder: '1234', class: 'form-control', required: true %> <br>
+    </div>
+    <%= form.submit 'Войти', class:'btn btn-primary'%>
+  <% end %>
+
+  <br>
+
+  <% if !signed_in? %>
+    <%= link_to 'Зарегистрироваться', new_user_path, class: 'btn btn-success' %>
+    <br>
+  <% else %>
+    <%= link_to 'Выйти', session_logout_path, class:'btn btn-warning' %> <br>
+  <% end %>
+
+  <br>
+
+  <h5><%= link_to 'Список пользователей', users_path, class:'btn btn-info' %></h5>
+
+</main>

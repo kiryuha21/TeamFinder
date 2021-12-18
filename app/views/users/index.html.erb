@@ -1,0 +1,33 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+    main {
+        margin: 20px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+    body {
+        background: url(<%= image_path 'form4.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
+<p style="color: green"><%= notice %></p>
+
+<main>
+
+  <h1>Зарегистрированные пользователи </h1>
+
+  <div id="users">
+    <% User.find_each do |user| %>
+      <strong>Никнейм</strong>: <%= user.nickname %> <br>
+      <strong>Последний вход</strong>: <%= user.last_login %> <br>
+      <h5><%= link_to 'Посмотреть данные пользователя', user, style: 'color: #E1C35A' %> </h5> <br> <br>
+    <% end %>
+  </div>
+
+  <h4><%= link_to "Вернуться на страницу регистрации", session_login_path, style: 'color: #138808' %></h4>
+
+</main>
