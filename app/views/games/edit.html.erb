@@ -1,10 +1,35 @@
-<h1>Editing game</h1>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    main {
+        margin: 20px;
 
-<%= render "form", game: @game %>
+        font-family: 'Noto Sans', sans-serif;
+    }
+    body {
+        background: url(<%= image_path 'game_index.jpg' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 
-<br>
+    body:after{
+        display:none;
+        content: url(<%= image_path 'game_index.jpg' %>);
+    }
+</style>
 
-<div>
-  <%= link_to "Show this game", @game %> |
-  <%= link_to "Back to games", games_path %>
-</div>
+<main>
+
+  <h1>Редактирование игры</h1>
+
+  <%= render "form", game: @game %>
+
+  <br>
+
+  <div>
+    <%= link_to "Show this game", @game %> |
+    <%= link_to "Back to games", games_path %>
+  </div>
+
+</main>

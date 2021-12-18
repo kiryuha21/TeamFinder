@@ -19,7 +19,7 @@
   <div class="mb-3" style="width: 350px;">
     <%= form.label :image, 'Изображение игры', style: "display: block;" %>
     <% if game.image.attached? %>
-      <%= image_tag game.image, style: 'width: 200px; display: block;' %>
+      <%= image_tag game.image, style: 'width: 200px; display: block;' %> <br>
     <% end %>
     <%= form.file_field :image, class: 'form-control', accept: 'image/jpg, image/png, image/jpeg' %>
     <div class="form-text" style="width: 300px">в противном случае будет использовано изображение по умолчанию</div>
