@@ -11,14 +11,15 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3" style="width: 200px;">
+    <%= form.label :name, 'Название игры', style: "display: block" %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :picture_ref, style: "display: block" %>
-    <%= form.text_field :picture_ref %>
+  <div class="mb-3" style="width: 200px;">
+    <%= form.label :picture_ref, 'Изображение игры', style: "display: block;" %>
+    <input type="file" id="picture_ref" class="form-control-file">
+    <div class="form-text" style="width: 300px">в противном случае будет использовано изображение по умолчанию</div>
   </div>
 
   <div>
