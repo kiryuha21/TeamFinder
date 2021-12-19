@@ -1,19 +1,3 @@
-<style>
-    .post {
-        background-color: #ADD8E6;
-        width: 850px;
-        height: 240px;
-        margin: auto;
-        border-radius: 10px;
-    }
-
-    .post-wrapper {
-        height: fit-content;
-        width: fit-content;
-        margin: auto;
-    }
-</style>
-
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
     <div style="color: red">

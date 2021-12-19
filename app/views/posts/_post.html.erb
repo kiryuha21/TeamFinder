@@ -1,14 +1,17 @@
 <div id="<%= dom_id post %>">
+  <p>
+    <strong>Автор: </strong><%= User.find_by_id(post.user_id).nickname %>
+  </p>
   <div class="title">
   <p>
-    <strong>Заголовок:</strong>
-    <%= post.title %>
+    <h3><%= post.title %></h3>
   </p>
   </div>
 
+  <hr>
+
   <div class="body">
   <p>
-    <strong>Текст поста:</strong>
     <%= post.body %>
   </p>
   </div>

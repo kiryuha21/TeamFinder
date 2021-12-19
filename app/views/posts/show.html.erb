@@ -15,11 +15,22 @@
         background-size: cover;
     }
 
+    .body {
+        width: 300px;
+        margin: auto;
+    }
+
+    h5, h5>a {
+        color: #Ffa62b;
+    }
+
     body:after{
         display:none;
         content: url(<%= image_path 'game_index.jpg' %>);
     }
 </style>
+
+<main>
 
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
@@ -31,8 +42,16 @@
 <%= render @post %>
 
 <div>
-  <%= link_to "Отредактировать пост", edit_post_path(@post) %> |
-  <%= link_to "Вернуться ко всем постам", posts_path %>
+  <h5>
+    <% if @current_user.nickname == current_game.creator %>
+      <%= link_to "Отредактировать пост", edit_post_path(@post) %> |
+    <% end %>
+    <%= link_to "Вернуться ко всем постам", posts_path %>
+  </h5>
 
-  <%= button_to "Удалить пост", @post, method: :delete %>
+  <br>
+
+  <%= button_to "Удалить пост", @post, method: :delete, class: 'btn btn-danger' %>
 </div>
+
+</main>
