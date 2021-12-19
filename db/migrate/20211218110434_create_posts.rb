@@ -3,6 +3,8 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     create_table :posts do |t|
       t.string :title
       t.string :body
+      t.belongs_to :game, index: true, foreign_key: true
+      t.belongs_to :user, index: true, foreign_key: true
 
       t.timestamps
     end

@@ -8,7 +8,7 @@
     }
 
     .main-part {
-        height: 550px;
+        height: 500px;
     }
 
     .desc-part {
@@ -17,6 +17,7 @@
         height: 200px;
         width: 500px;
         top: -100px;
+        border-radius: 25px;
     }
 
     .desc-text {
@@ -30,7 +31,7 @@
 
     .link-part {
         position: relative;
-        top: -150px;
+        top: -120px;
         font-size: x-large;
         width: 500px;
     }
@@ -64,17 +65,24 @@
 
 <main>
 
-  <p style="color: green"><%= notice %></p>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
+      <%= value %>
+    </div>
+    <br>
+  <% end %>
 
   <h2>Список игр для поиска товарищей</h2>
 
   <div id="games" class="d-flex flex-column bd-highlight mb-3">
     <% @games.each do |game| %>
       <div class="main-part">
-        <% if game.image.attached? %>
-          <%= image_tag game.image, class: 'game' %>
-        <% else %>
-          <%= image_tag 'default.jpg', class: 'game' %>
+        <%= link_to posts_path + "?game=#{game.name}" do %>
+          <% if game.image.attached? %>
+              <%= image_tag game.image, class: 'game' %>
+          <% else %>
+            <%= image_tag 'default.jpg', class: 'game' %>
+          <% end %>
         <% end %>
         <div class="desc-part">
           <div class="desc-text">
