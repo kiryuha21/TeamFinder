@@ -3,12 +3,24 @@
     @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
 
     main {
-        margin: 20px;
+        text-align: center;
         font-family: 'Noto Sans', sans-serif;
     }
 
+    .post {
+        background-color: #ADD8E6;
+        width: 500px;
+        margin: auto;
+        border-radius: 10px;
+    }
+
+    .post-wrapper {
+        width: 450px;
+        margin: auto;
+    }
+
     body {
-        background: url(<%= image_path 'game_index.jpg' %>) no-repeat center center fixed;
+        background: url(<%= image_path 'posts.png' %>) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -20,28 +32,32 @@
         content: url(<%= image_path 'game_index.jpg' %>);
     }
 </style>
-<link rel="stylesheet" href="actiontext.css">
+<link rel="stylesheet" href="/app/assets/stylesheets/actiontext.css">
 
 <main>
 
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
-    <%= value %>
-  </div>
-  <br>
-<% end %>
-
-<h1>Публикации</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
+      <%= value %>
+    </div>
+    <br>
   <% end %>
-</div>
 
-<%= link_to "New post", new_post_path %>
+  <h1>Публикации</h1>
+
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <div class="post-wrapper">
+          <%= render post %>
+        </div>
+      </div>
+      <p>
+        <%= link_to "Посмотреть этот пост", post, style: 'color: #Ffa62b' %>
+      </p>
+    <% end %>
+  </div>
+
+  <h5><%= link_to "Написать новый пост", new_post_path, style: 'color: #Ffa62b' %></h5>
 
 </main>

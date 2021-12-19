@@ -1,15 +1,23 @@
 module PostsHelper
-=begin
-  def game_name=(name)
-    self.game_name = name
+  def _set_game(game)
+    return unless params[:game]
+
+    cookies[:current_game] = { value: game }
   end
 
-  def game_name
-    game_name
+  def clean_cookies
+    cookies[:current_game] = nil
   end
 
-  def game_present?
-    !game_name.nil?
+  def game_set?
+    !cookies[:current_game].nil?
   end
-=end
+
+  def current_game=(game)
+    @current_game = game
+  end
+
+  def current_game
+    @current_game ||= Game.find_by_name cookies[:current_game]
+  end
 end

@@ -1,10 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+
+    main {
+        text-align: center;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    body {
+        background: url(<%= image_path 'posts.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body:after{
+        display:none;
+        content: url(<%= image_path 'game_index.jpg' %>);
+    }
+</style>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
+    <%= value %>
+  </div>
+  <br>
+<% end %>
 
 <%= render @post %>
 
 <div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+  <%= link_to "Отредактировать пост", edit_post_path(@post) %> |
+  <%= link_to "Вернуться ко всем постам", posts_path %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <%= button_to "Удалить пост", @post, method: :delete %>
 </div>

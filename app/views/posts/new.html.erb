@@ -1,9 +1,39 @@
-<h1>New post</h1>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
 
-<%= render "form", post: @post %>
+    main {
+        text-align: center;
+        font-family: 'Noto Sans', sans-serif;
+    }
 
-<br>
+    body {
+        background: url(<%= image_path 'posts.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 
-<div>
-  <%= link_to "Back to posts", posts_path %>
-</div>
+    body:after{
+        display:none;
+        content: url(<%= image_path 'game_index.jpg' %>);
+    }
+</style>
+<link rel="stylesheet" href="/app/assets/stylesheets/actiontext.css">
+
+<main>
+
+  <h1>Новая публикация</h1>
+
+
+      <%= render "form", post: @post %>
+
+
+  <br>
+
+  <div style="vertical-align: bottom">
+    <%= link_to "Вернуться ко всем постам", posts_path %>
+  </div>
+
+</main>
