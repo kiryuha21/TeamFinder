@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   root 'session#welcome_page'
   get 'session/login'
   get 'session/welcome_page'

@@ -1,0 +1,13 @@
+<h1>Новый комментарий</h1>
+
+<h2>Исходный пост:</h2>
+
+<%= render 'posts/post', post: current_post %>
+
+<%= render "form", comment: @comment %>
+
+<br>
+
+<div>
+  <%= link_to "Вернуться к комментариям", comments_path %>
+</div>

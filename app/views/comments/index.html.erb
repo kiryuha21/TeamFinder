@@ -1,0 +1,67 @@
+<style>
+  main {
+  margin: 20px;
+  font-family: 'Noto Sans', sans-serif;
+  }
+
+  body {
+  background: url(<%= image_path 'comments2.png' %>) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+  #comments {
+      background-color: #7393B3;
+      width: 330px;
+      border-radius: 10px;
+      margin: auto;
+      padding: 5px;
+  }
+
+  .comments-wrapper {
+      width: 300px;
+      margin: auto;
+      height: fit-content;
+  }
+
+  body:after{
+  display:none;
+  content: url(<%= image_path 'comments2.png' %>);
+  }
+</style>
+
+<main>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
+    <%= value %>
+  </div>
+  <br>
+<% end %>
+
+<h1 style="margin: auto; width: fit-content">Комментарии</h1>
+
+<div id="comments">
+  <div class="comments-wrapper">
+  <% @comments.each do |comment| %>
+    <div>
+    <%= render comment %>
+      <% if @current_user.nickname == comment.author %>
+        <p><%= link_to "Отредактировать", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></p>
+      <% end %>
+      <% unless @comments[-1] == comment %>
+      <hr style="width: 300px">
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+  <br>
+  <div style="margin: auto; width: fit-content">
+    <%= link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
+  </div>
+
+</main>

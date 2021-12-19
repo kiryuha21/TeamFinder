@@ -5,7 +5,7 @@ module PostsHelper
     cookies[:current_game] = { value: game }
   end
 
-  def clean_cookies
+  def clean_game_cookies
     cookies[:current_game] = nil
   end
 
