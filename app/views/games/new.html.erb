@@ -6,7 +6,7 @@
         font-family: 'Noto Sans', sans-serif;
     }
     body {
-        background: url(<%= image_path 'form4.png' %>) no-repeat center center fixed;
+        background: url(<%= image_path 'games_i.png' %>) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -17,13 +17,36 @@
         display:none;
         content: url(<%= image_path 'form4.png' %>);
     }
+
+    .game {
+        width: 500px;
+        margin: auto;
+    }
+
+    .game-wrapper {
+        width: 550px;
+        background-color: #563a63;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .mb-3 {
+        margin: auto;
+        width: fit-content;
+    }
 </style>
 
 <main>
 
+  <div class="game-wrapper">
+  <div class="game">
   <h1>Добавление игры</h1>
 
   <%= render "form", game: @game %>
+  </div>
+  </div>
 
   <br>
 

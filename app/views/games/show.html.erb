@@ -2,15 +2,29 @@
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
     main {
-        margin: 20px;
+        text-align: center;
         font-family: 'Noto Sans', sans-serif;
     }
     body {
-        background: url(<%= image_path 'game_index.jpg' %>) no-repeat center center fixed;
+        background: url(<%= image_path 'games_i.png' %>) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+    }
+
+    .game {
+        width: 500px;
+        margin: auto;
+    }
+
+    .game-wrapper {
+        width: 550px;
+        background-color: #563a63;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        margin: auto;
     }
 </style>
 
@@ -18,17 +32,21 @@
 
 <p style="color: green"><%= notice %></p>
 
+  <div class="game-wrapper">
+  <div class="game">
 <%= render @game %>
+  </div>
+  </div>
 
-<div>
-  <%= link_to "Отредактировать игру", edit_game_path(@game) %> |
-  <%= link_to "Вернуться к списку игр", games_path %>
+  <br>
+
+  <%= link_to "Отредактировать игру", edit_game_path(@game), class: 'btn btn-warning' %> |
+  <%= link_to "Вернуться к списку игр", games_path, class: 'btn btn-warning'%>
 
   <br> <br>
 
   <% if @game.creator == @current_user.nickname %>
     <%= button_to "Удалить эту игру", @game, method: :delete, class: 'btn btn-danger' %>
   <% end %>
-</div>
 
 </main>
