@@ -43,12 +43,14 @@
 
 <main>
 
+  <div style="width: fit-content; margin: auto;">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
       <%= value %>
     </div>
     <br>
   <% end %>
+  </div>
 
   <h1>Публикации по игре <%= current_game.name %></h1>
 

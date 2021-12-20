@@ -15,6 +15,18 @@
         background-size: cover;
     }
 
+    .post {
+        background-color: #ADD8E6;
+        width: 500px;
+        margin: auto;
+        border-radius: 10px;
+    }
+
+    .post-wrapper {
+        width: 450px;
+        margin: auto;
+    }
+
     .body {
         width: 300px;
         margin: auto;
@@ -32,14 +44,20 @@
 
 <main>
 
+  <div style="margin: auto; width: fit-content">
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
     <%= value %>
   </div>
   <br>
 <% end %>
+  </div>
 
-<%= render @post %>
+  <div class="post" style="margin-top: 20px;">
+    <div class="post-wrapper">
+      <%= render @post %>
+    </div>
+  </div>
 
 <div>
   <h5>

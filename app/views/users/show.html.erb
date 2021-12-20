@@ -29,7 +29,7 @@
     <br>
 
     <% if @current_user.nickname == @user.nickname %>
-      <%= button_to "Удалить свой аккаунт", user_path(@user), method: :delete, class: 'btn btn-outline-danger' %>
+      <%= button_to "Удалить свой аккаунт", user_path(@user), method: :delete, class: 'btn btn-danger' %>
     <% end %>
   </div>
 

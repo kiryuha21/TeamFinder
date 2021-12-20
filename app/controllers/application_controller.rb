@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def game_cookies
-    return if controller_name == 'posts'
+    return if controller_name == 'posts' || controller_name == 'comments'
 
     clean_game_cookies
   end

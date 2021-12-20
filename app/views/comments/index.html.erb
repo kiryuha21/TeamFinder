@@ -12,6 +12,18 @@
   background-size: cover;
   }
 
+  .post {
+      background-color: #ADD8E6;
+      width: 500px;
+      margin: auto;
+      border-radius: 10px;
+  }
+
+  .post-wrapper {
+      width: 450px;
+      margin: auto;
+  }
+
   #comments {
       background-color: #7393B3;
       width: 330px;
@@ -32,6 +44,51 @@
   }
 </style>
 
+<script>
+    function create_form() {
+        let comment_place = document.getElementById("comment_place");
+        let form = document.createElement("form");
+        let text_input = document.createElement("input");
+        let submit = document.createElement("input");
+
+        text_input.setAttribute("type", "text");
+        submit.setAttribute("type", "submit");
+        submit.innerText = "Добавить комментарий"
+        submit.setAttribute("class", "btn btn-success");
+        text_input.setAttribute("class", "form-control");
+
+        form.appendChild(text_input);
+        form.appendChild(submit);
+        comment_place.appendChild(form);
+    }
+
+    function delete_form() {
+        let btn = document.getElementsByClassName("delete-button")[0];
+        let form = document.getElementsByTagName("form")[0];
+        form.remove();
+        btn.remove();
+    }
+
+    function create_delete_btn() {
+        let btn = document.createElement("button");
+        let div = document.getElementById("delete-btn-section");
+
+        btn.setAttribute("class", "btn btn-danger delete-button");
+        btn.innerText = "Убрать форму";
+        btn.addEventListener("click", delete_form);
+        div.appendChild(btn);
+    }
+
+    function btn_action() {
+        create_delete_btn();
+        create_form();
+    }
+      /*let button = document.getElementsByTagName("button")[0];
+      let create_post = async function() {
+          let text =
+      };*/
+</script>
+
 <main>
 
 <% flash.each do |key, value| %>
@@ -40,13 +97,20 @@
   </div>
   <br>
 <% end %>
+  <div class="post">
+  <div class="post-wrapper" style="text-align: center">
+  <h1>Исходный пост:</h1>
 
-<h1 style="margin: auto; width: fit-content">Комментарии</h1>
+  <%= render 'posts/post', post: current_post %>
+  </div>
+  </div>
+
+<h1 style="margin: auto; width: fit-content"></h1>
 
 <div id="comments">
   <div class="comments-wrapper">
+    <h1 style="width: 300px; text-align: center">Комментарии</h1>
   <% @comments.each do |comment| %>
-    <div>
     <%= render comment %>
       <% if @current_user.nickname == comment.author %>
         <p><%= link_to "Отредактировать", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></p>
@@ -54,14 +118,19 @@
       <% unless @comments[-1] == comment %>
       <hr style="width: 300px">
       <% end %>
-    </div>
   <% end %>
+    <div id="comment_place"></div>
   </div>
 </div>
 
   <br>
   <div style="margin: auto; width: fit-content">
-    <%= link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
+    <%# link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
+    <div style=" width: 300px; text-align: center">
+    <button class="btn btn-success" id="new-comm" onclick="btn_action()">Новый комментарий</button>
+    </div>
+    <br> <br>
+    <div id="delete-btn-section" style="width: 300px; text-align: center"></div>
   </div>
 
 </main>

@@ -12,6 +12,18 @@
         -o-background-size: cover;
         background-size: cover;
     }
+
+    .post {
+        background-color: #ADD8E6;
+        width: 500px;
+        border-radius: 10px;
+    }
+
+    .post-wrapper {
+        width: 450px;
+        margin: auto;
+    }
+
 </style>
 
 <p style="color: green"><%= notice %></p>
@@ -21,13 +33,17 @@
   <h1>Зарегистрированные пользователи </h1>
 
   <div id="users">
+    <div class="post">
+    <div class="post-wrapper">
     <% User.find_each do |user| %>
       <strong>Никнейм</strong>: <%= user.nickname %> <br>
       <strong>Последний вход</strong>: <%= user.last_login %> <br>
-      <h5><%= link_to 'Посмотреть данные пользователя', user, style: 'color: #E1C35A' %> </h5> <br> <br>
+      <h5><%= link_to 'Посмотреть данные пользователя', user, style: 'color: #E1C35A' %> </h5> <br> <hr>
     <% end %>
+    </div>
+    </div>
   </div>
 
-  <h4><%= link_to "Вернуться на страницу регистрации", session_login_path, style: 'color: #138808' %></h4>
+  <h4><%= link_to "Вернуться на страницу регистрации", session_login_path, class: 'btn btn-info' %></h4>
 
 </main>
