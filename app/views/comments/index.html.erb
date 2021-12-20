@@ -50,14 +50,23 @@
         let form = document.createElement("form");
         let text_input = document.createElement("input");
         let submit = document.createElement("input");
+        let br_elem = document.createElement("br");
 
         text_input.setAttribute("type", "text");
+        text_input.setAttribute("class", "form-control");
+        text_input.setAttribute("id", "input");
+        text_input.setAttribute("name", "input");
+
         submit.setAttribute("type", "submit");
         submit.innerText = "Добавить комментарий"
         submit.setAttribute("class", "btn btn-success");
-        text_input.setAttribute("class", "form-control");
+
+        form.setAttribute("style", "text-align: center;");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/comments")
 
         form.appendChild(text_input);
+        form.appendChild(br_elem);
         form.appendChild(submit);
         comment_place.appendChild(form);
     }
@@ -79,7 +88,16 @@
         div.appendChild(btn);
     }
 
+    async function create_comm() {
+        let comm_text = document.getElementById("input").value;
+        let action_url = '/comments?'
+    }
+
     function btn_action() {
+        if (document.getElementsByClassName("btn-danger")[0]) {
+            alert("Вы можете создавать только один комментарий одновременно!");
+            return;
+        }
         create_delete_btn();
         create_form();
     }
@@ -125,12 +143,7 @@
 
   <br>
   <div style="margin: auto; width: fit-content">
-    <%# link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
-    <div style=" width: 300px; text-align: center">
-    <button class="btn btn-success" id="new-comm" onclick="btn_action()">Новый комментарий</button>
-    </div>
-    <br> <br>
-    <div id="delete-btn-section" style="width: 300px; text-align: center"></div>
+    <%= link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
   </div>
 
 </main>

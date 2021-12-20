@@ -25,6 +25,8 @@ class CommentsController < ApplicationController
     @comment.user_id = @current_user.id
     @comment.author = @current_user.nickname
 
+    p @comment.to_query 'comment'
+
     respond_to do |format|
       if @comment.save
         format.html { redirect_to comment_url(@comment), notice: 'Comment was successfully created.' }
