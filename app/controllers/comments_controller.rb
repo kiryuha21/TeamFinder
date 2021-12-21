@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :check_post, except: :index
+  skip_before_action :verify_authenticity_token, only: :create
 
   # GET /comments or /comments.json
   def index
@@ -21,11 +22,11 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = current_post.comments.new(comment_params)
+    @comment = current_post.comments.new(text: params[:text])
     @comment.user_id = @current_user.id
     @comment.author = @current_user.nickname
 
-    p @comment.to_query 'comment'
+    p @comment
 
     respond_to do |format|
       if @comment.save

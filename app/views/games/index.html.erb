@@ -70,12 +70,14 @@
 
 <main>
 
+  <div style="width: fit-content; margin: auto;">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
       <%= value %>
     </div>
     <br>
   <% end %>
+  </div>
 
   <h2 style="text-align: center">Список игр для поиска товарищей</h2>
 

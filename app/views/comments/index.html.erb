@@ -62,8 +62,8 @@
         submit.setAttribute("class", "btn btn-success");
 
         form.setAttribute("style", "text-align: center;");
-        form.setAttribute("method", "post");
-        form.setAttribute("action", "/comments")
+        //form.setAttribute("method", "post");
+        //form.setAttribute("action", "/comments")
 
         form.appendChild(text_input);
         form.appendChild(br_elem);
@@ -89,8 +89,25 @@
     }
 
     async function create_comm() {
+        let pre_responce = await fetch("/comments/new");
+        if (!pre_responce.ok) {
+            alert("Что-то пошло не так(1)! Ошибка" + pre_responce.status);
+        }
+
         let comm_text = document.getElementById("input").value;
-        let action_url = '/comments?'
+        let action_url = '/comments?text=' + comm_text;
+        let comm_place = document.getElementById("comment_place");
+        comm_place.removeChild(comm_place.firstChild);
+
+        let responce = await fetch(action_url, {
+            method: 'POST',
+        });
+        if (!responce.ok) {
+            alert("Что-то пошло не так(2)! Ошибка" + responce.status);
+        } else {
+            let text = await responce.text();
+            console.log(text);
+        }
     }
 
     function btn_action() {
@@ -100,11 +117,12 @@
         }
         create_delete_btn();
         create_form();
+        let form = document.getElementsByTagName("form")[0];
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            create_comm();
+        });
     }
-      /*let button = document.getElementsByTagName("button")[0];
-      let create_post = async function() {
-          let text =
-      };*/
 </script>
 
 <main>
@@ -130,6 +148,7 @@
     <h1 style="width: 300px; text-align: center">Комментарии</h1>
   <% @comments.each do |comment| %>
     <%= render comment %>
+      <div id="new_comment_section"></div>
       <% if @current_user.nickname == comment.author %>
         <p><%= link_to "Отредактировать", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></p>
       <% end %>
@@ -143,7 +162,9 @@
 
   <br>
   <div style="margin: auto; width: fit-content">
-    <%= link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
+    <%# link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
+    <button class="btn btn-success" onclick="btn_action()">Написать комментарий</button> <br> <br>
+    <div id="delete-btn-section" style="text-align: center"></div>
   </div>
 
 </main>
