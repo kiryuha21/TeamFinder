@@ -62,18 +62,18 @@
         submit.setAttribute("class", "btn btn-success");
 
         form.setAttribute("style", "text-align: center;");
-        //form.setAttribute("method", "post");
-        //form.setAttribute("action", "/comments")
+        form.setAttribute("id", "comm-enter-form");
 
         form.appendChild(text_input);
         form.appendChild(br_elem);
         form.appendChild(submit);
+        comment_place.appendChild(document.createElement("br"));
         comment_place.appendChild(form);
     }
 
     function delete_form() {
         let btn = document.getElementsByClassName("delete-button")[0];
-        let form = document.getElementsByTagName("form")[0];
+        let form = document.getElementById("comm-enter-form");
         form.remove();
         btn.remove();
     }
@@ -97,27 +97,33 @@
         let comm_text = document.getElementById("input").value;
         let action_url = '/comments?text=' + comm_text;
         let comm_place = document.getElementById("comment_place");
-        comm_place.removeChild(comm_place.firstChild);
+        delete_form();
 
         let responce = await fetch(action_url, {
             method: 'POST',
         });
-        if (!responce.ok) {
-            alert("Что-то пошло не так(2)! Ошибка" + responce.status);
-        } else {
+        if (responce.ok) {
             let text = await responce.text();
-            console.log(text);
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(text, "text/html");
+            if (comm_place.children[0]) {
+                comm_place.appendChild(document.createElement("hr"));
+            }
+            comm_place.appendChild(doc.getElementById("comment-content"));
+            comm_place.removeChild(comm_place.getElementsByTagName("br")[0]);
+        } else {
+            alert("Что-то пошло не так(2)! Ошибка" + responce.status);
         }
     }
 
     function btn_action() {
-        if (document.getElementsByClassName("btn-danger")[0]) {
+        if (document.getElementsByClassName("delete-button")[0]) {
             alert("Вы можете создавать только один комментарий одновременно!");
             return;
         }
         create_delete_btn();
         create_form();
-        let form = document.getElementsByTagName("form")[0];
+        let form = document.getElementById("comm-enter-form");
         form.addEventListener("submit", function(event) {
             event.preventDefault();
             create_comm();
@@ -150,7 +156,10 @@
     <%= render comment %>
       <div id="new_comment_section"></div>
       <% if @current_user.nickname == comment.author %>
-        <p><%= link_to "Отредактировать", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></p>
+        <div style="display: flex; flex-direction: row">
+          <div style="margin-right: 10px"><%= link_to "Редактировать", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></div>
+          <div><%= button_to "Удалить", comment, method: :delete, class: 'btn btn-danger btn-sm' %></div>
+        </div>
       <% end %>
       <% unless @comments[-1] == comment %>
       <hr style="width: 300px">
@@ -162,7 +171,6 @@
 
   <br>
   <div style="margin: auto; width: fit-content">
-    <%# link_to "Новый комментарий", new_comment_path, class: 'btn btn-success' %>
     <button class="btn btn-success" onclick="btn_action()">Написать комментарий</button> <br> <br>
     <div id="delete-btn-section" style="text-align: center"></div>
   </div>

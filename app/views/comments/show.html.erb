@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<div id="comment-content">
+  <%= render @comment %>
 
-<%= render @comment %>
-
-<div>
-  <%= link_to "Отредактировать", edit_comment_path(@comment) %> |
-  <%= link_to "Все комментарии", comments_path %>
-
-  <%= button_to "Удалить комментарий", @comment, method: :delete, class: 'btn btn-danger' %>
+  <div style="display: flex; flex-direction: row">
+    <div style="margin-right: 10px;"> <%= link_to "Редактировать", edit_comment_path(@comment), class: 'btn btn-info btn-sm' %> </div>
+    <div> <%= button_to "Удалить", @comment, method: :delete, class: 'btn btn-danger btn-sm' %> </div>
+  </div>
 </div>

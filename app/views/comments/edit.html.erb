@@ -1,10 +1,45 @@
-<h1>Editing comment</h1>
+<style>
+    main {
+        margin: 20px;
+        text-align: center;
+    }
 
-<%= render "form", comment: @comment %>
+    body {
+        background: url(<%= image_path 'comments2.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 
-<br>
+    .comment {
+        width: 500px;
+        margin: auto
+    }
 
-<div>
-  <%= link_to "Показать комментарий", @comment %> |
-  <%= link_to "Вернуться к комменатриям", comments_path %>
-</div>
+    .comment-wrapper {
+        background-color: #7393B3;
+        width: 550px;
+        margin: auto;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+</style>
+
+<main>
+  <div class="comment-wrapper">
+    <div class="comment">
+      <h1>Редактирование комментария</h1>
+
+      <div style="margin: auto; width: fit-content">
+      <%= render "form", comment: @comment %>
+      </div>
+      <br>
+
+      <div>
+        <%= link_to "Вернуться к комменатриям", comments_path, class: 'btn btn-info' %>
+      </div>
+    </div>
+  </div>
+</main>
