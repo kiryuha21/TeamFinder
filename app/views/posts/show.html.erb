@@ -69,7 +69,9 @@
 
   <br>
 
-  <%= button_to "Удалить пост", @post, method: :delete, class: 'btn btn-danger' %>
+  <% if @current_user.nickname == current_game.creator %>
+    <%= button_to "Удалить пост", @post, method: :delete, class: 'btn btn-danger' %>
+  <% end %>
 </div>
 
 </main>

@@ -40,7 +40,9 @@
 
   <br>
 
-  <%= link_to "Отредактировать игру", edit_game_path(@game), class: 'btn btn-warning' %> |
+  <% if @current_user.nickname == @game.creator %>
+    <%= link_to "Отредактировать игру", edit_game_path(@game), class: 'btn btn-warning' %> |
+  <% end %>
   <%= link_to "Вернуться к списку игр", games_path, class: 'btn btn-warning'%>
 
   <br> <br>
