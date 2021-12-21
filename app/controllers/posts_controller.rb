@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :check_game, except: :index
+  skip_before_action :require_login, only: :index
 
   # GET /posts or /posts.json
   def index
     _set_game params[:game]
     @posts = current_game.posts.all
+    @current_user ||= User.find_by_id cookies.signed[:user_id]
   end
 
   # GET /posts/1 or /posts/1.json

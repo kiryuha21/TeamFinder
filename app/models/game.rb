@@ -4,4 +4,6 @@ class Game < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   validates_presence_of :name, :creator
+
+  validates_uniqueness_of :name
 end

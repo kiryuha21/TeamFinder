@@ -2,11 +2,13 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :check_post, except: :index
   skip_before_action :verify_authenticity_token, only: :create
+  skip_before_action :require_login, only: :index
 
   # GET /comments or /comments.json
   def index
     _set_post params[:post]
     @comments = current_post.comments.all
+    @current_user ||= User.find_by_id cookies.signed[:user_id]
   end
 
   # GET /comments/1 or /comments/1.json

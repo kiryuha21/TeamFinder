@@ -1,13 +1,5 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  author: MyString
-  author_id: one
-  post: one
-  text: MyString
-
-two:
-  author: MyString
-  author_id: two
-  post: two
-  text: MyString
+  author: kiryuha21
+  text: test
