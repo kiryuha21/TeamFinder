@@ -44,14 +44,11 @@
   <div class="game">
   <h1>Добавление игры</h1>
 
-  <%= render "form", game: @game %>
+    <%= render "form", game: @game %> <br>
+    <%= link_to "Вернуться к списку игр", games_path, class: 'btn btn-info' %>
   </div>
   </div>
 
   <br>
-
-  <div>
-    <%= link_to "Вернуться к списку игр", games_path %>
-  </div>
 
 </main>
