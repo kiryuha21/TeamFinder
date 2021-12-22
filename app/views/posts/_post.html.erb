@@ -1,7 +1,7 @@
 <div id="<%= dom_id post %>">
   <div class="_post">
   <p>
-    <strong>Автор: </strong><%= User.find_by_id(post.user_id).nickname %>
+    <strong><%= t '.author' %>: </strong><%= User.find_by_id(post.user_id).nickname %>
   </p>
   <div class="title">
   <p>

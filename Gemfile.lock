@@ -97,6 +97,8 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
+    i18n-js (3.9.0)
+      i18n (>= 0.6.6)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -222,6 +224,7 @@ DEPENDENCIES
   debug
   faker
   ffi
+  i18n-js
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

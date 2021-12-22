@@ -37,15 +37,15 @@
 
 <main>
 
-<h1>Редактирование поста</h1>
+<h1><%= t '.edit_t' %></h1>
 
 <%= render "form", post: @post %>
 
 <br>
 
 <div>
-  <%= link_to "Show this post", @post %> |
-  <%= link_to "Back to posts", posts_path %>
+  <%= link_to "#{ t '.show' }", @post, class: 'btn btn-info' %> |
+  <%= link_to "#{ t '.posts' }", posts_path, class: 'btn btn-info' %>
 </div>
 
 </main>

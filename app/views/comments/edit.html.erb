@@ -30,7 +30,7 @@
 <main>
   <div class="comment-wrapper">
     <div class="comment">
-      <h1>Редактирование комментария</h1>
+      <h1><%= t '.edit_t' %></h1>
 
       <div style="margin: auto; width: fit-content">
       <%= render "form", comment: @comment %>
@@ -38,7 +38,7 @@
       <br>
 
       <div>
-        <%= link_to "Вернуться к комменатриям", comments_path, class: 'btn btn-info' %>
+        <%= link_to "#{ t '.comments' }", comments_path, class: 'btn btn-info' %>
       </div>
     </div>
   </div>

@@ -14,12 +14,12 @@
   <div class="post">
   <div class="post-wrapper">
   <div class="mb-3" style="margin: auto; width: 350px;">
-    <%= form.label :title, 'Заголовок', style: "display: block" %>
+    <%= form.label :title, "#{ t '.title' }", style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="mb-3" style="margin: auto; width: 800px; height: fit-content; background-color: white">
-    <%= form.label :body, 'Текст поста', style: "display: block" %>
+    <%= form.label :body, "#{ t '.text' }", style: "display: block" %>
     <%= form.rich_text_area :body %>
   </div>
 
@@ -30,9 +30,9 @@
 
   <div>
     <% if action_name == 'edit' %>
-      <%= form.submit 'Подтвердить изменения', class: 'btn btn-success' %>
+      <%= form.submit "#{ t '.edit' }", class: 'btn btn-success' %>
     <% else %>
-      <%= form.submit 'Создать пост', class: 'btn btn-success' %>
+      <%= form.submit "#{ t '.create' }", class: 'btn btn-success' %>
     <% end %>
   </div>
 <% end %>

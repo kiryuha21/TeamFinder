@@ -12,6 +12,7 @@
         flex-direction: row;
         width: 500px;
         margin: 20px auto 50px auto;
+        justify-content: space-between;
     }
 
     .post {
@@ -39,7 +40,6 @@
         content: url(<%= image_path 'posts.png' %>);
     }
 </style>
-<link rel="stylesheet" href="/app/assets/stylesheets/actiontext.css">
 
 <main>
 
@@ -52,7 +52,10 @@
   <% end %>
   </div>
 
-  <h1>Публикации по игре <%= current_game.name %></h1>
+  <h1>
+    <%= t '.ind' %>
+    <%= current_game.name %>
+  </h1>
 
   <div id="posts">
     <% @posts.each do |post| %>
@@ -62,12 +65,12 @@
         </div>
       </div>
       <div class="desc-section">
-        <h5><%= link_to "Посмотреть этот пост", post, class: 'btn btn-warning' %></h5>
-        <h5 style="padding-left: 165px"><%= link_to "Комментарии", comments_path + "?post=#{post.id}", class: 'btn btn-warning' %></h5>
+        <h5><%= link_to "#{ t '.show' }", post, class: 'btn btn-warning' %></h5>
+        <h5><%= link_to "#{ t '.comments' }", comments_path + "?post=#{post.id}", class: 'btn btn-warning' %></h5>
       </div>
     <% end %>
   </div>
 
-  <h5><%= link_to "Написать новый пост", new_post_path, class: 'btn btn-info' %></h5>
+  <h5><%= link_to "#{ t '.new' }", new_post_path, class: 'btn btn-info' %></h5>
 
 </main>

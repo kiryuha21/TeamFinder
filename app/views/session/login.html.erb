@@ -35,7 +35,7 @@
   <%= form_with url: session_create_url do |form| %>
     <div class="mb-3" style="width: 200px;">
       <%= form.label :user, "#{t '.nickname'}" %> <br>
-      <%= form.text_field :user, placeholder: 'Papa_Mraka', class: 'form-control', required: true %>
+      <%= form.text_field :user, placeholder: 'user', class: 'form-control', required: true %>
     </div>
     <div class="mb-3" style="width: 200px;">
       <%= form.label :password, "#{t '.password'}" %> <br>

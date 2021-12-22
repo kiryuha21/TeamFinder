@@ -58,7 +58,7 @@
         text_input.setAttribute("name", "input");
 
         submit.setAttribute("type", "submit");
-        submit.innerText = "Добавить комментарий"
+        submit.innerText = "<%= t '.add' %>";
         submit.setAttribute("class", "btn btn-success");
 
         form.setAttribute("style", "text-align: center;");
@@ -83,7 +83,7 @@
         let div = document.getElementById("delete-btn-section");
 
         btn.setAttribute("class", "btn btn-danger delete-button");
-        btn.innerText = "Убрать форму";
+        btn.innerText = "<%= t '.remove' %>";
         btn.addEventListener("click", delete_form);
         div.appendChild(btn);
     }
@@ -91,7 +91,7 @@
     async function create_comm() {
         let pre_responce = await fetch("/comments/new");
         if (!pre_responce.ok) {
-            alert("Что-то пошло не так(1)! Ошибка" + pre_responce.status);
+            alert("<%= t '.error1' %>" + pre_responce.status);
         }
 
         let comm_text = document.getElementById("input").value;
@@ -112,13 +112,13 @@
             comm_place.appendChild(doc.getElementById("comment-content"));
             comm_place.removeChild(comm_place.getElementsByTagName("br")[0]);
         } else {
-            alert("Что-то пошло не так(2)! Ошибка" + responce.status);
+            alert("<%= t '.error2' %>" + responce.status);
         }
     }
 
     function btn_action() {
         if (document.getElementsByClassName("delete-button")[0]) {
-            alert("Вы можете создавать только один комментарий одновременно!");
+            alert("<%= t '.error' %>");
             return;
         }
         create_delete_btn();
@@ -141,7 +141,7 @@
 <% end %>
   <div class="post">
   <div class="post-wrapper" style="text-align: center">
-  <h1>Исходный пост:</h1>
+  <h1><%= t '.orig' %>:</h1>
 
   <%= render 'posts/post', post: current_post %>
   </div>
@@ -151,14 +151,14 @@
 
 <div id="comments">
   <div class="comments-wrapper">
-    <h1 style="width: 300px; text-align: center">Комментарии</h1>
+    <h1 style="width: 300px; text-align: center"><%= t '.comms' %></h1>
   <% @comments.each do |comment| %>
     <%= render comment %>
       <div id="new_comment_section"></div>
       <% if !@current_user.nil? && @current_user.nickname == comment.author %>
         <div style="display: flex; flex-direction: row">
-          <div style="margin-right: 10px"><%= link_to "Редактировать", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></div>
-          <div><%= button_to "Удалить", comment, method: :delete, class: 'btn btn-danger btn-sm' %></div>
+          <div style="margin-right: 10px"><%= link_to "#{ t '.edit' }", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></div>
+          <div><%= button_to "#{ t '.delete' }", comment, method: :delete, class: 'btn btn-danger btn-sm' %></div>
         </div>
       <% end %>
       <% unless @comments[-1] == comment %>
@@ -171,7 +171,7 @@
 
   <br>
   <div style="margin: auto; width: fit-content">
-    <button class="btn btn-success" onclick="btn_action()">Написать комментарий</button> <br> <br>
+    <button class="btn btn-success" onclick="btn_action()"><%= t '.new' %></button> <br> <br>
     <div id="delete-btn-section" style="text-align: center"></div>
   </div>
 

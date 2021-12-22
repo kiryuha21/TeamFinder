@@ -34,11 +34,10 @@
         content: url(<%= image_path 'posts.png' %>);
     }
 </style>
-<link rel="stylesheet" href="/app/assets/stylesheets/actiontext.css">
 
 <main>
 
-  <h1>Новая публикация</h1>
+  <h1><%= t '.title' %></h1>
 
 
       <%= render "form", post: @post %>
@@ -47,7 +46,7 @@
   <br>
 
   <div style="vertical-align: bottom;">
-    <h5><%= link_to "Вернуться ко всем постам", posts_path, class: 'btn btn-info' %></h5>
+    <h5><%= link_to "#{ t '.posts' }", posts_path, class: 'btn btn-info' %></h5>
   </div>
 
 </main>

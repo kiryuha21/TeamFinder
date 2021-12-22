@@ -38,7 +38,7 @@
     <div class="post-wrapper" style="line-height: 200%">
     <% @users.each do |user| %>
       <strong><%= t '.nickname' %></strong>: <%= user.nickname %> <br>
-      <strong><%= t '.last_login' %></strong>: <%= user.last_login %>
+      <strong><%= t '.last_login' %></strong>: <%= l user.last_login, format: :long %>
       <h5><%= link_to "#{t '.user_data'}", user, class: 'btn btn-warning btn-sm' %> </h5>
       <% unless user == @users[-1] %>  <hr> <% end %>
     <% end %>

@@ -32,10 +32,6 @@
         margin: auto;
     }
 
-    h5, h5>a {
-        color: #Ffa62b;
-    }
-
     body:after{
         display:none;
         content: url(<%= image_path 'posts.png' %>);
@@ -59,18 +55,18 @@
     </div>
   </div>
 
-<div>
+<div style="margin: auto; width: 500px">
   <h5>
     <% if @current_user.id == @post.user_id %>
-      <%= link_to "Отредактировать пост", edit_post_path(@post) %> |
+      <%= link_to "#{ t '.edit' }", edit_post_path(@post), class: 'btn btn-warning' %> |
     <% end %>
-    <%= link_to "Вернуться ко всем постам", posts_path %>
+    <%= link_to "#{ t '.posts' }", posts_path, class: 'btn btn-warning' %>
   </h5>
 
   <br>
 
   <% if @current_user.nickname == current_game.creator %>
-    <%= button_to "Удалить пост", @post, method: :delete, class: 'btn btn-danger' %>
+    <%= button_to "#{ t '.delete' }", @post, method: :delete, class: 'btn btn-danger' %>
   <% end %>
 </div>
 

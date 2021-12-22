@@ -12,6 +12,7 @@ class SessionController < ApplicationController
 
     if user&.authenticate params[:password]
       sign_in user
+      user.update_last_login
       redirect_to games_path
     else
       redirect_to session_login_path
