@@ -16,22 +16,22 @@
 
 <main>
 
-  <h1>Редактирование пользователя</h1>
+  <h1><%= t '.edit_t' %></h1>
 
   <br>
 
   <% if @current_user.nickname == @user.nickname %>
     <%= render "form", user: @user %>
   <% else %>
-    <div class="alert alert-danger" style="width: fit-content">Вы не можете редактировать чужой аккаунт</div>
+    <div class="alert alert-danger" style="width: fit-content"><%= t '.alert' %></div>
   <% end %>
 
   <br>
 
   <div>
     <h5>
-      <%= link_to "Вернуться к информации о пользователе", @user, style: 'color: #E1C35A' %> <br> <br>
-      <%= link_to "Вернуться к списку пользователей", users_path, style: 'color: #E1C35A' %>
+      <%= link_to "#{t '.user_i'}", @user, class: 'btn btn-warning' %> <br> <br>
+      <%= link_to "#{t '.user_l'}", users_path, class: 'btn btn-warning' %>
     </h5>
   </div>
 

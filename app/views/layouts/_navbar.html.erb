@@ -1,25 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #Ffa62b; z-index: 2;">
   <div class="container-fluid">
-  <div class="navbar-brand">Навигационная панель</div>
+  <div class="navbar-brand"><%= t 'navbar.nav' %></div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <%= link_to 'Начальная страница', session_welcome_page_path, class: 'nav-link active' %>
+        <%= link_to (t 'navbar.home_p'), session_welcome_page_path, class: 'nav-link active' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Страница входа', session_login_path, class: 'nav-link active' %>
+        <%= link_to (t 'navbar.enter_p'), session_login_path, class: 'nav-link active' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Пользователи', users_path, class: 'nav-link active' %>
+        <%= link_to (t 'navbar.users'), users_path, class: 'nav-link active' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Игры', games_path, class: 'nav-link active' %>
+        <%= link_to (t 'navbar.games'), games_path, class: 'nav-link active' %>
+      </li>
+    </ul>
+    <ul class="navbar-nav" style="position: relative; left: -20px;">
+      <li class="nav-item">
+        <%= link_to "EN", url_for(locale: :en), class: 'nav-link active' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "RU", url_for(locale: :ru), class: 'nav-link active' %>
       </li>
     </ul>
     <% if @current_user %>
-      <div class="me-2"> Вы вошли как <%= @current_user.nickname %> </div>
-      <%= link_to 'Выйти', session_logout_path, class: 'btn btn-warning', style: 'background-color: #FC8A17, border-color: #FC8A17' %>
+      <div class="me-2"> <%= t 'navbar.logged_as' %> <%= @current_user.nickname %> </div>
+      <%= link_to (t 'navbar.log_out'), session_logout_path, class: 'btn btn-warning', style: 'background-color: #FC8A17, border-color: #FC8A17' %>
     <% end %>
   </div>
   </div>

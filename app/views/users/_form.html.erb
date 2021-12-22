@@ -13,22 +13,22 @@
 
 
   <div class="mb-3" style="width: 200px;">
-    <%= form.label :real_name, 'Ваше настоящее имя', style: "display: block" %>
+    <%= form.label :real_name, "#{ t '.real_name' }", style: "display: block" %>
     <%= form.text_field :real_name, class: "form-control" %>
   </div>
 
   <div class="mb-3" style="width: 200px;">
-    <%= form.label :nickname, 'Ваш никнейм на сайте', style: "display: block" %>
+    <%= form.label :nickname, "#{ t '.nickname' }", style: "display: block" %>
     <%= form.text_field :nickname, class: "form-control" %>
   </div>
 
   <div class="mb-3" style="width: 200px;">
-    <%= form.label :password, 'Введите пароль', style: "display: block" %>
+    <%= form.label :password, "#{ t '.password' }", style: "display: block" %>
     <%= form.password_field :password, class: "form-control" %>
   </div>
 
   <div class="form-group" style="width: 200px;">
-    <%= form.label :password_conf, 'Подтвердите пароль', style: "display: block" %>
+    <%= form.label :password_conf, "#{ t '.password_conf' }", style: "display: block" %>
     <%= form.password_field :password_conf, class: "form-control" %>
   </div>
 
@@ -36,9 +36,9 @@
 
   <div>
     <% if action_name == 'new' %>
-      <%= form.submit 'Создать пользователя', class:'btn btn-success' %>
+      <%= form.submit "#{ t '.create' }", class:'btn btn-success' %>
     <% else %>
-      <%= form.submit 'Подвердить изменения', class:'btn btn-success' %>
+      <%= form.submit "#{ t '.update' }", class:'btn btn-success' %>
     <% end %>
   </div>
 <% end %>

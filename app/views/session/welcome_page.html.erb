@@ -8,12 +8,11 @@
     }
 
     body {
-        background-image: url(<%= image_path 'main_bg6.png' %>);
-
-        background-position: center;
-        background-repeat: no-repeat;
+        background: url(<%= image_path 'main_bg6.png' %>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
         background-size: cover;
-        overflow: hidden;
     }
 
     body:after{
@@ -41,10 +40,10 @@
 
 <header style="text-align: center; margin-top: 250px" class="welcome">
   <h1>TeamFinder</h1>
-  <h3>Современный сервис для поиска товарищей по игре</h3> <br>
+  <h3> <%= t '.desc' %> </h3> <br>
   <% if !signed_in? %>
-    <%= link_to "Войти", session_login_path, class:"btn btn-primary btn-lg" %> <br> <br>
-    <%= link_to "Зарегистрироваться", new_user_path, class: 'btn btn-success btn-lg' %>
+    <%= link_to (t '.enter'), session_login_path, class:"btn btn-primary btn-lg" %> <br> <br>
+    <%= link_to (t '.log_in'), new_user_path, class: 'btn btn-success btn-lg' %>
   <% else %>
     <%= link_to "К играм!", games_path, class:'btn btn-success btn-lg' %>
   <% end %>

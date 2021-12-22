@@ -17,6 +17,7 @@
         background-color: #ADD8E6;
         width: 500px;
         border-radius: 10px;
+        padding: 10px;
     }
 
     .post-wrapper {
@@ -30,20 +31,23 @@
 
 <main>
 
-  <h1>Зарегистрированные пользователи </h1>
+  <h1><%= t '.users_l' %></h1>
 
   <div id="users">
     <div class="post">
-    <div class="post-wrapper">
-    <% User.find_each do |user| %>
-      <strong>Никнейм</strong>: <%= user.nickname %> <br>
-      <strong>Последний вход</strong>: <%= user.last_login %> <br>
-      <h5><%= link_to 'Посмотреть данные пользователя', user, style: 'color: #E1C35A' %> </h5> <br> <hr>
+    <div class="post-wrapper" style="line-height: 200%">
+    <% @users.each do |user| %>
+      <strong><%= t '.nickname' %></strong>: <%= user.nickname %> <br>
+      <strong><%= t '.last_login' %></strong>: <%= user.last_login %>
+      <h5><%= link_to "#{t '.user_data'}", user, class: 'btn btn-warning btn-sm' %> </h5>
+      <% unless user == @users[-1] %>  <hr> <% end %>
     <% end %>
     </div>
     </div>
   </div>
 
-  <h4><%= link_to "Вернуться на страницу регистрации", session_login_path, class: 'btn btn-info' %></h4>
+  <br>
+
+  <h4><%= link_to "#{t '.login_ref'}", session_login_path, class: 'btn btn-info' %></h4>
 
 </main>

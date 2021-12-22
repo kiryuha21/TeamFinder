@@ -1,16 +1,18 @@
 <div id="<%= dom_id user %>">
+  <% if action_name == 'show' and @user.nickname == @current_user.nickname %>
   <p>
-    <strong>Настоящее имя:</strong>
+    <strong><%= t '.real_name' %>:</strong>
     <%= user.real_name %>
   </p>
+  <% end %>
 
   <p>
-    <strong>Никнейм:</strong>
+    <strong><%= t '.nickname' %>:</strong>
     <%= user.nickname %>
   </p>
 
   <p>
-    <strong>Последний вход:</strong>
+    <strong><%= t '.last_login' %>:</strong>
     <%= user.last_login %>
   </p>
 </div>

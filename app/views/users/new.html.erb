@@ -21,14 +21,14 @@
 
 <main>
 
-  <h1>Регистрация</h1>
+  <h1><%= t '.reg' %></h1>
 
   <%= render "form", user: @user %>
 
   <br>
 
   <div>
-    <%= link_to "Список зарегистрированных пользователей", users_path, class: 'btn btn-info' %>
+    <%= link_to "#{ t '.users_l' }", users_path, class: 'btn btn-info' %>
   </div>
 
 </main>

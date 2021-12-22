@@ -1,33 +1,79 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  navbar:
+    nav: "Navigation bar"
+    home_p: "Home page"
+    enter_p: "Login page"
+    users: "Users list"
+    games: "Games"
+    logged_as: "You are logged as"
+    log_out: "Log out"
+  session:
+    welcome_page:
+      desc: "Modern service for finding teammates"
+      enter: "Log in"
+      log_in: "Sign in"
+    login:
+      auth: "Log in"
+      msg: "Log into your account to earn access to full website functionality"
+      nickname: "Nickname"
+      password: "Password"
+      log_in: "Log in"
+      sign_in: "Sign in"
+      log_out: "Log out"
+      users: "Users list"
+  users:
+    form:
+      real_name: "Your real name"
+      nickname: "Your nickname on this website"
+      password: "Create a password"
+      password_conf: "Confirm a password"
+      create: "Create user"
+      update: "Confirm changes"
+    user:
+      real_name: "Real name"
+      nickname: "Nickname"
+      last_login: "Last login"
+    edit:
+      edit_t: "Editing user"
+      alert: "You can't edit stranger's account"
+      user_i: "Back to user info"
+      user_l: "Back to users list"
+    index:
+      users_l: "Known users"
+      nickname: "Nickname"
+      last_login: "Last login"
+      user_data: "Show user's information"
+      login_ref: "Back to login page"
+    new:
+      reg: "Sign in"
+      users_l: "Known users list"
+    show:
+      edit_t: "Edit data"
+      users: "Back to users list"
+      del: "Delete this account"
+  games:
+    form:
+      name: "Name of the game"
+      pic: "Picture of the game"
+      comm: "Default picture will be used in case no picture attached"
+      add: "Add game"
+      edit: "Save changes"
+    game:
+      created_by: "Created by"
+      name: "Name of the game"
+      pic: "Picture"
+    edit:
+      edit_t: "Game edit"
+      show: "Back to show"
+      games: "Back to games"
+    index:
+      game_list: "Game list for teammates search"
+      game_info: "Game info"
+      add: "Add a new game"
+    new:
+      add: "Adding a game"
+      games: "Back to games list"
+    show:
+      edit: "Edit this game"
+      games: "Back to games list"
+      delete: "Delete this game"

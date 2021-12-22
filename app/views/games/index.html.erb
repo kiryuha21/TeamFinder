@@ -79,7 +79,7 @@
   <% end %>
   </div>
 
-  <h2 style="text-align: center">Список игр для поиска товарищей</h2>
+  <h2 style="text-align: center"><%= t '.game_list' %></h2>
 
   <div id="games" class="d-flex flex-column bd-highlight mb-3">
     <% @games.each do |game| %>
@@ -100,7 +100,7 @@
       </div>
       <div class="link-part">
         <div class="link-text">
-          <h3><%= link_to "Информация об игре", game, class: 'btn btn-warning' %></h3>
+          <h3><%= link_to "#{ t '.game_info' }", game, class: 'btn btn-warning' %></h3>
         </div>
       </div>
       </div>
@@ -108,6 +108,6 @@
   </div>
 
   <% if signed_in? %>
-    <h4 style="text-align: center"><%= link_to 'Добавить новую игру', new_game_path, class: 'btn btn-info' %></h4>
+    <h4 style="text-align: center"><%= link_to "#{ t '.add' }", new_game_path, class: 'btn btn-info' %></h4>
   <% end %>
 </main>

@@ -28,33 +28,33 @@
     <br>
   <% end %>
 
-  <h1>Авторизация</h1>
+  <h1><%= t '.auth' %></h1>
 
-  <h3>Войдите в свой аккаунт чтобы получить доступ к полному функционалу сайта</h3>
+  <h3><%= t '.msg' %></h3>
 
   <%= form_with url: session_create_url do |form| %>
     <div class="mb-3" style="width: 200px;">
-      <%= form.label :user, "Никнейм" %> <br>
+      <%= form.label :user, "#{t '.nickname'}" %> <br>
       <%= form.text_field :user, placeholder: 'Papa_Mraka', class: 'form-control', required: true %>
     </div>
     <div class="mb-3" style="width: 200px;">
-      <%= form.label :password, 'Пароль' %> <br>
+      <%= form.label :password, "#{t '.password'}" %> <br>
       <%= form.password_field :password, placeholder: '1234', class: 'form-control', required: true %> <br>
     </div>
-    <%= form.submit 'Войти', class:'btn btn-primary'%>
+    <%= form.submit "#{t '.log_in'}", class:'btn btn-primary'%>
   <% end %>
 
   <br>
 
   <% if !signed_in? %>
-    <%= link_to 'Зарегистрироваться', new_user_path, class: 'btn btn-success' %>
+    <%= link_to "#{t '.sign_in'}", new_user_path, class: 'btn btn-success' %>
     <br>
   <% else %>
-    <%= link_to 'Выйти', session_logout_path, class:'btn btn-warning' %> <br>
+    <%= link_to "#{t '.log_out'}", session_logout_path, class:'btn btn-warning' %> <br>
   <% end %>
 
   <br>
 
-  <h5><%= link_to 'Список пользователей', users_path, class:'btn btn-info' %></h5>
+  <h5><%= link_to "#{t '.users'}", users_path, class:'btn btn-info' %></h5>
 
 </main>
