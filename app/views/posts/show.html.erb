@@ -61,7 +61,7 @@
 
 <div>
   <h5>
-    <% if @current_user.nickname == current_game.creator %>
+    <% if @current_user.id == @post.user_id %>
       <%= link_to "Отредактировать пост", edit_post_path(@post) %> |
     <% end %>
     <%= link_to "Вернуться ко всем постам", posts_path %>
