@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :nickname
 
-  validates_presence_of :nickname, :real_name, :password_digest
+  validates_presence_of :nickname, :real_name
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

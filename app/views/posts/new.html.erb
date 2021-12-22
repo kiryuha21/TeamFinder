@@ -31,7 +31,7 @@
 
     body:after{
         display:none;
-        content: url(<%= image_path 'game_index.jpg' %>);
+        content: url(<%= image_path 'posts.png' %>);
     }
 </style>
 <link rel="stylesheet" href="/app/assets/stylesheets/actiontext.css">
@@ -47,7 +47,7 @@
   <br>
 
   <div style="vertical-align: bottom;">
-    <h5><%= link_to "Вернуться ко всем постам", posts_path, style: 'color: #Ffa62b' %></h5>
+    <h5><%= link_to "Вернуться ко всем постам", posts_path, class: 'btn btn-info' %></h5>
   </div>
 
 </main>

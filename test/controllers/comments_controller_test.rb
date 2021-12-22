@@ -1,5 +1,4 @@
 require 'test_helper'
-require_relative 'tests_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
   def create_user

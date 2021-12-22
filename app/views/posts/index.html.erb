@@ -36,7 +36,7 @@
 
     body:after{
         display:none;
-        content: url(<%= image_path 'game_index.jpg' %>);
+        content: url(<%= image_path 'posts.png' %>);
     }
 </style>
 <link rel="stylesheet" href="/app/assets/stylesheets/actiontext.css">
@@ -62,12 +62,12 @@
         </div>
       </div>
       <div class="desc-section">
-        <h5><%= link_to "Посмотреть этот пост", post, style: 'color: #Ffa62b' %></h5>
-        <h5 style="padding-left: 140px"><%= link_to "Комментарии", comments_path + "?post=#{post.id}", style: 'color: #Ffa62b' %></h5>
+        <h5><%= link_to "Посмотреть этот пост", post, class: 'btn btn-warning' %></h5>
+        <h5 style="padding-left: 165px"><%= link_to "Комментарии", comments_path + "?post=#{post.id}", class: 'btn btn-warning' %></h5>
       </div>
     <% end %>
   </div>
 
-  <h5><%= link_to "Написать новый пост", new_post_path, style: 'color: #Ffa62b' %></h5>
+  <h5><%= link_to "Написать новый пост", new_post_path, class: 'btn btn-info' %></h5>
 
 </main>
