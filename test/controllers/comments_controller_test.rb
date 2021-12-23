@@ -49,7 +49,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create comment' do
     assert_difference('Comment.count') do
-      post comments_url, params: { text: @text }
+      post comments_url, params: { text: Faker::Lorem.word }
     end
 
     assert_redirected_to comment_url(Comment.last)
