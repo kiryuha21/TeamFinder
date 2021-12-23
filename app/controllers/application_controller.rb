@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = extract_locale || I18n.default_locale
+    @current_user&.update_last_login
   end
 
   def extract_locale

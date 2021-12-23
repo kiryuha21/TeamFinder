@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def update_last_login
-    self.last_login = DateTime.now + 3.hours
+    self.last_login = DateTime.now
     save
   end
 end
