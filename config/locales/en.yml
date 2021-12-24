@@ -225,6 +225,7 @@ en:
       desc: "Modern service for finding teammates"
       enter: "Log in"
       log_in: "Sign in"
+      go: 'To games!'
     login:
       auth: "Log in"
       msg: "Log into your account to earn access to full website functionality"
