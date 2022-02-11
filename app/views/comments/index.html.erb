@@ -92,10 +92,11 @@
         let pre_responce = await fetch("/comments/new");
         if (!pre_responce.ok) {
             alert("<%= t '.error1' %>" + pre_responce.status);
+            return;
         }
 
         let comm_text = document.getElementById("input").value;
-        let action_url = '/comments?text=' + comm_text;
+        let action_url = 'http://localhost:3000/' + '<%= I18n.locale.to_s %>' + '/comments?text=' + comm_text;
         let comm_place = document.getElementById("comment_place");
         delete_form();
 

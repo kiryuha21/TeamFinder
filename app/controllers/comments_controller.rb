@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# main class for comments
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :check_post, except: :index
@@ -7,7 +10,7 @@ class CommentsController < ApplicationController
   # GET /comments or /comments.json
   def index
     _set_post params[:post]
-    @comments = current_post.comments.all
+    @comments = current_post.comments.all.sort_by(&:created_at)
     @current_user ||= User.find_by_id cookies.signed[:user_id]
   end
 

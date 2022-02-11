@@ -337,3 +337,6 @@ en:
       text: "Comment text"
       edit: "Save changes"
       create: "Post comment"
+    comment:
+      created_at: "Created at"
+      updated_at: "Updated at"
