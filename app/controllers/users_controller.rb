@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.all.sort_by(&:created_at)
     @current_user ||= User.find_by_id cookies.signed[:user_id]
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id]).sort_by(&created_at)
+    @user = User.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
