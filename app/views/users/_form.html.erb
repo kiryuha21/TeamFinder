@@ -22,12 +22,21 @@
     <%= form.text_field :nickname, class: "form-control" %>
   </div>
 
+  <div class="mb-3" style="width: 350px;">
+    <%= form.label :image, "#{ t '.avatar' }", style: "display: block;" %>
+    <% if user.image.attached? %>
+      <%= image_tag user.image, style: 'width: 200px; display: block;' %> <br>
+    <% end %>
+    <%= form.file_field :image, class: 'form-control', accept: 'image/jpg, image/png, image/jpeg' %>
+    <div class="form-text" style="width: 300px"><%= t '.comm' %></div>
+  </div>
+
   <div class="mb-3" style="width: 200px;">
     <%= form.label :password, "#{ t '.password' }", style: "display: block" %>
     <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="form-group" style="width: 200px;">
+  <div class="mb-3" style="width: 200px;">
     <%= form.label :password_conf, "#{ t '.password_conf' }", style: "display: block" %>
     <%= form.password_field :password_conf, class: "form-control" %>
   </div>

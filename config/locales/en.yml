@@ -239,6 +239,8 @@ en:
     form:
       real_name: "Your real name"
       nickname: "Your nickname on this website"
+      avatar: "Your avatar on this website"
+      comm: "Default picture will be used in case no picture attached"
       password: "Create a password"
       password_conf: "Confirm a password"
       create: "Create user"

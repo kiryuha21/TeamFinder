@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+# model class for user
 class User < ApplicationRecord
   has_secure_password
+
+  has_one_attached :avatar
 
   validates_uniqueness_of :nickname
 
