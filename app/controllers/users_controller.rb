@@ -61,11 +61,11 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).sort_by(&created_at)
   end
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:real_name, :nickname, :password, :password_conf, :last_login)
+    params.require(:user).permit(:real_name, :nickname, :avatar, :password, :password_conf, :last_login)
   end
 end

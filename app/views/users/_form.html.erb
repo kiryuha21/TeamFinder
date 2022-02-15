@@ -24,10 +24,10 @@
 
   <div class="mb-3" style="width: 350px;">
     <%= form.label :image, "#{ t '.avatar' }", style: "display: block;" %>
-    <% if user.image.attached? %>
-      <%= image_tag user.image, style: 'width: 200px; display: block;' %> <br>
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, style: 'width: 200px; display: block;' %> <br>
     <% end %>
-    <%= form.file_field :image, class: 'form-control', accept: 'image/jpg, image/png, image/jpeg' %>
+    <%= form.file_field :avatar, class: 'form-control', accept: 'image/jpg, image/png, image/jpeg' %>
     <div class="form-text" style="width: 300px"><%= t '.comm' %></div>
   </div>
 
