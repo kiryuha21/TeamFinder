@@ -97,6 +97,7 @@
         }
 
         let comm_text = document.getElementById("input").value;
+        let hash = { comment: { text: comm_text }}
         let action_url = 'http://localhost:3000/' + '<%= I18n.locale.to_s %>' + '/comments?text=' + comm_text;
         let comm_place = document.getElementById("comment_place");
         delete_form();
@@ -104,8 +105,10 @@
         const token = document.getElementsByName("csrf-token")[0].content;
         let responce = await fetch(action_url, {
             method: 'POST',
+            body: JSON.stringify(hash),
             headers: {
-                "X-CSRF-Token": token
+                "X-CSRF-Token": token,
+                "CONTENT-TYPE": "application/json"
             }
         });
         if (responce.ok) {

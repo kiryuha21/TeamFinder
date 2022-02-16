@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = current_post.comments.new(text: params[:text])
+    @comment = current_post.comments.new(comment_params)
     @comment.user_id = @current_user.id
     @comment.author = @current_user.nickname
 
