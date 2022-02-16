@@ -4,7 +4,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :check_post, except: :index
-  skip_before_action :verify_authenticity_token, only: :create
   skip_before_action :require_login, only: :index
 
   # GET /comments or /comments.json

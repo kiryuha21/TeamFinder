@@ -100,8 +100,12 @@
         let comm_place = document.getElementById("comment_place");
         delete_form();
 
+        const token = document.getElementsByName("csrf-token")[0].content;
         let responce = await fetch(action_url, {
             method: 'POST',
+            headers: {
+                "X-CSRF-Token": token
+            }
         });
         if (responce.ok) {
             let text = await responce.text();
