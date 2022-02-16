@@ -2,9 +2,9 @@
   <div style="display: grid; grid-template-columns: [avatar-start] 40px [avatar-end] 0 [comment-start]">
     <div style="grid-area: avatar; padding-top: 5px">
       <% if User.find_by_id(comment.user_id).avatar.attached? %>
-        <%= image_tag(User.find_by_id(comment.user_id).avatar, size: '30') %>
+        <%= image_tag(User.find_by_id(comment.user_id).avatar, size: '30', style: "border: 1px solid black") %>
       <% else %>
-        <%= image_tag 'default_avatar.jpg', size: '30' %>
+        <%= image_tag 'default_avatar.jpg', size: '30', style: "border: 1px solid black" %>
       <% end %>
     </div>
     <p style="grid-area: comment">

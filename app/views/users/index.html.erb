@@ -46,9 +46,9 @@
       <strong><%= t '.nickname' %></strong>: <%= user.nickname %> <br>
       <strong><%= t '.last_login' %></strong>: <%= l user.last_login, format: :long %>
       <% if user.avatar.attached? %>
-          <%= image_tag user.avatar, size: "100", class: "user" %>
+          <%= image_tag user.avatar, size: "100", class: "user", style: "border: 2px solid black" %>
       <% else %>
-          <%= image_tag 'default_avatar.jpg', size: "100", class: "user" %>
+          <%= image_tag 'default_avatar.jpg', size: "100", class: "user", style: "border: 2px solid black" %>
       <% end %>
       <h5><%= link_to "#{t '.user_data'}", user, class: 'btn btn-warning btn-sm' %> </h5>
       <% unless user == @users[-1] %>  <hr> <% end %>

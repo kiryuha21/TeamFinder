@@ -19,9 +19,9 @@
   <p style="color: green"><%= notice %></p>
 
   <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, size: "300", class: "user" %>
+    <%= image_tag @user.avatar, size: "300", class: "user", style: "border: 2px solid black" %>
   <% else %>
-    <%= image_tag 'default_avatar.jpg', size: "300", class: "user" %>
+    <%= image_tag 'default_avatar.jpg', size: "300", class: "user", style: "border: 2px solid black" %>
   <% end %>
   <%= render @user %>
 

@@ -4,9 +4,9 @@
                                                       [avatar-end] 0 [title-start] 250px [title-end] 100px [post-end];">
       <div style="grid-area: avatar">
         <% if User.find_by_id(post.user_id).avatar.attached? %>
-          <%= image_tag User.find_by_id(post.user_id).avatar, size: "70" %>
+          <%= image_tag User.find_by_id(post.user_id).avatar, size: "70", style: "border: 2px solid black" %>
         <% else %>
-          <%= image_tag 'default_avatar.jpg', size: "70" %>
+          <%= image_tag 'default_avatar.jpg', size: "70", style: "border: 2px solid black" %>
         <% end %>
       </div>
       <div style="grid-area: author">
