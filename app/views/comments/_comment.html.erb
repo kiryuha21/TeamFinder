@@ -1,14 +1,23 @@
 <div id="<%= dom_id comment %>" class="num_of_comm">
-  <p>
-    <strong><%= comment.author %>:</strong>
-    <%= comment.text %>
-    <br>
-    <span style="font-size: 14px">
-      <% if comment.created_at == comment.updated_at %>
-        <%= t ".created_at" %>
+  <div style="display: grid; grid-template-columns: [avatar-start] 40px [avatar-end] 0 [comment-start]">
+    <div style="grid-area: avatar; padding-top: 5px">
+      <% if User.find_by_id(comment.user_id).avatar.attached? %>
+        <%= image_tag(User.find_by_id(comment.user_id).avatar, size: '30') %>
       <% else %>
-        <%= t ".updated_at" %>
+        <%= image_tag 'default_avatar.jpg', size: '30' %>
       <% end %>
-      <%= l comment.created_at, format: :long %> </span>
-  </p>
+    </div>
+    <p style="grid-area: comment">
+      <strong><%= comment.author %>:</strong>
+      <%= comment.text %>
+      <br>
+      <span style="font-size: 14px">
+        <% if comment.created_at == comment.updated_at %>
+          <%= t ".created_at" %>
+        <% else %>
+          <%= t ".updated_at" %>
+        <% end %>
+        <%= l comment.created_at, format: :long %> </span>
+    </p>
+  </div>
 </div>

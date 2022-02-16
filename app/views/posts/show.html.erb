@@ -65,7 +65,7 @@
 
   <br>
 
-  <% if @current_user.nickname == current_game.creator %>
+  <% if @current_user.nickname == User.find_by_id(@post.user).nickname %>
     <%= button_to "#{ t '.delete' }", @post, method: :delete, class: 'btn btn-danger' %>
   <% end %>
 </div>

@@ -1,6 +1,7 @@
 <div id="<%= dom_id post %>">
   <div class="_post">
-    <div style="display: grid; grid-template-columns: [avatar-start] 0 [post-start] 100px [avatar-end] 350px [post-end]; padding-top: 10px">
+    <div style="display: grid; padding-top: 10px; grid-template-columns: [avatar-start] 0 [author-start] 100px
+                                                      [avatar-end] 0 [title-start] 250px [title-end] 100px [post-end];">
       <div style="grid-area: avatar">
         <% if User.find_by_id(post.user_id).avatar.attached? %>
           <%= image_tag User.find_by_id(post.user_id).avatar, size: "70" %>
@@ -8,10 +9,12 @@
           <%= image_tag 'default_avatar.jpg', size: "70" %>
         <% end %>
       </div>
-      <div style="grid-area: post">
+      <div style="grid-area: author">
         <p>
           <strong><%= t '.author' %>: </strong><%= User.find_by_id(post.user_id).nickname %>
         </p>
+      </div>
+      <div style="grid-area: title">
         <div class="title">
           <p>
             <h3><%= post.title %></h3>
