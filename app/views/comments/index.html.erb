@@ -50,7 +50,6 @@
         let form = document.createElement("form");
         let text_input = document.createElement("input");
         let submit = document.createElement("input");
-        let br_elem = document.createElement("br");
 
         text_input.setAttribute("type", "text");
         text_input.setAttribute("class", "form-control");
@@ -65,7 +64,7 @@
         form.setAttribute("id", "comm-enter-form");
 
         form.appendChild(text_input);
-        form.appendChild(br_elem);
+        form.appendChild(document.createElement("br"));
         form.appendChild(submit);
         comment_place.appendChild(document.createElement("br"));
         comment_place.appendChild(form);
@@ -89,9 +88,11 @@
     }
 
     async function create_comm() {
+        let comment_place = document.getElementById("comment_place");
         let pre_responce = await fetch("/comments/new");
         if (!pre_responce.ok) {
             alert("<%= t '.error1' %>" + pre_responce.status);
+            comment_place.removeChild(comment_place.lastChild);
             return;
         }
 
@@ -118,6 +119,7 @@
             comm_place.removeChild(comm_place.getElementsByTagName("br")[0]);
         } else {
             alert("<%= t '.error2' %>" + responce.status);
+            comment_place.removeChild(comment_place.lastChild);
         }
     }
 
