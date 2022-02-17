@@ -41,11 +41,16 @@
 <main>
 
   <div class="game-wrapper">
-  <div class="game">
-  <h1><%= t '.edit_t' %></h1>
-
-  <%= render "form", game: @game %>
-  </div>
+      <div class="game">
+          <h1><%= t '.edit_t' %></h1>
+          <% if @current_user.nickname == @game.creator %>
+            <%= render "form", game: @game %>
+          <% else %>
+            <div class="alert alert-danger">
+              <%= t '.warning' %>
+            </div>
+          <% end %>
+      </div>
   </div>
 
   <br>

@@ -282,6 +282,7 @@ en:
       edit_t: "Game edit"
       show: "Back to show"
       games: "Back to games"
+      warning: "You can edit only your games"
     index:
       game_list: "Game list for teammates search"
       game_info: "Game info"
@@ -305,6 +306,7 @@ en:
       edit_t: "Post edit"
       show: "Show this post"
       posts: "Back to posts"
+      warning: "You can edit only your posts"
     index:
       ind: "Posts about"
       show: "Show this post"
@@ -332,6 +334,7 @@ en:
     edit:
       edit_t: "Editing comment"
       comments: "Back to comments"
+      warning: "You can edit only your own comments"
     show:
       edit: "Edit"
       delete: "Delete"

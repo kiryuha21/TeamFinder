@@ -36,16 +36,23 @@
 </style>
 
 <main>
+    <h1><%= t '.edit_t' %></h1>
 
-<h1><%= t '.edit_t' %></h1>
+    <% if @post.user_id == @current_user.id %>
+        <%= render "form", post: @post %>
+    <% else %>
+        <div class="post">
+          <div class="post-wrapper">
+            <div class="alert-danger alert" style="margin: auto">
+              <%= t '.warning' %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  <br>
 
-<%= render "form", post: @post %>
-
-<br>
-
-<div>
-  <%= link_to "#{ t '.show' }", @post, class: 'btn btn-info' %> |
-  <%= link_to "#{ t '.posts' }", posts_path, class: 'btn btn-info' %>
-</div>
-
+    <div>
+      <%= link_to "#{ t '.show' }", @post, class: 'btn btn-info' %> |
+      <%= link_to "#{ t '.posts' }", posts_path, class: 'btn btn-info' %>
+    </div>
 </main>
