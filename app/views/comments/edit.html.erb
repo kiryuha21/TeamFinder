@@ -1,31 +1,5 @@
-<style>
-    main {
-        margin: 20px;
-        text-align: center;
-    }
-
-    body {
-        background: url(<%= image_path 'comments2.png' %>) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-
-    .comment {
-        width: 500px;
-        margin: auto
-    }
-
-    .comment-wrapper {
-        background-color: #7393B3;
-        width: 550px;
-        margin: auto;
-        border-radius: 10px;
-        padding: 10px;
-    }
-
-</style>
+<%= stylesheet_link_tag 'comments_common', media: "all", "data-turbolinks-track": "reload" %>
+<%= stylesheet_link_tag 'comments_edit', media: "all", "data-turbolinks-track": "reload" %>
 
 <main>
   <div class="comment-wrapper">
