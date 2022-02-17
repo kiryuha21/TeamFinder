@@ -1,34 +1,7 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+<%= stylesheet_link_tag "games_common", media: "all", "data-turbolinks-track": "reload" %>
+<%= stylesheet_link_tag "games_edit_new_show", media: "all", "data-turbolinks-track": "reload" %>
 
-    main {
-        text-align: center;
-        font-family: 'Noto Sans', sans-serif;
-    }
-    body {
-        background: url(<%= image_path 'games_i.png' %>) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-
-    .game {
-        width: 500px;
-        margin: auto;
-    }
-
-    .game-wrapper {
-        width: 550px;
-        background-color: #563a63;
-        border-radius: 10px;
-        padding: 10px;
-        text-align: center;
-        margin: auto;
-    }
-</style>
-
-<main>
+<main style="text-align: center">
 
 <p style="color: green"><%= notice %></p>
 
@@ -40,14 +13,14 @@
 
   <br>
 
-  <% if @current_user.nickname == @game.creator %>
+  <% if @current_user.nickname == @game.creator || @current_user.is_admin %>
     <%= link_to "#{ t '.edit' }", edit_game_path(@game), class: 'btn btn-warning' %> |
   <% end %>
   <%= link_to "#{ t '.games' }", games_path, class: 'btn btn-warning'%>
 
   <br> <br>
 
-  <% if @game.creator == @current_user.nickname %>
+  <% if @game.creator == @current_user.nickname || @current_user.is_admin %>
     <%= button_to "#{ t '.delete' }", @game, method: :delete, class: 'btn btn-danger' %>
   <% end %>
 

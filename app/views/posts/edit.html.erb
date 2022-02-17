@@ -1,44 +1,10 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
-
-    main {
-        text-align: center;
-        font-family: 'Noto Sans', sans-serif;
-    }
-
-    body {
-        background: url(<%= image_path 'posts.png' %>) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-
-    .post {
-        background-color: #ADD8E6;
-        width: 850px;
-        margin: auto;
-        border-radius: 10px;
-        padding: 5px;
-    }
-
-    .post-wrapper {
-        height: fit-content;
-        width: fit-content;
-        margin: auto;
-    }
-
-    body:after{
-        display:none;
-        content: url(<%= image_path 'posts.png' %>);
-    }
-</style>
+<%= stylesheet_link_tag "posts_common", media: "all", "data-turbolinks-track": "reload" %>
+<%= stylesheet_link_tag "posts_new_edit", media: "all", "data-turbolinks-track": "reload" %>
 
 <main>
     <h1><%= t '.edit_t' %></h1>
 
-    <% if @post.user_id == @current_user.id %>
+    <% if @post.user_id == @current_user.id || @current_user.is_admin %>
         <%= render "form", post: @post %>
     <% else %>
         <div class="post">

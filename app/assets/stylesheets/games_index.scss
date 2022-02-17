@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+
+.main-part {
+  height: 500px;
+}
+
+.full-wrapper {
+  width: fit-content;
+  margin: auto;
+}
+
+.desc-part {
+  position: relative;
+  background-color: #563a63;
+  height: 200px;
+  width: 500px;
+  top: -100px;
+  border-radius: 25px;
+}
+
+.desc-text {
+  position: static;
+  text-align: center;
+  padding: 120px 10%;
+  font-family: 'Rakkas', cursive;
+  font-size: xxx-large;
+  color: #fae9bf;
+}
+
+.link-part {
+  position: relative;
+  top: -120px;
+  font-size: x-large;
+  width: 500px;
+}
+
+.link-text {
+  position: static;
+  text-align: center;
+}
+
+.game {
+  width: 500px;
+  height: 250px;
+  border-radius: 100px;
+  z-index: 1;
+  position: relative;
+}

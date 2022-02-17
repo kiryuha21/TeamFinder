@@ -1,54 +1,7 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
-
-    main {
-        text-align: center;
-        font-family: 'Noto Sans', sans-serif;
-    }
-
-    .desc-section {
-        display: flex;
-        flex-direction: row;
-        width: 500px;
-        margin: 20px auto 50px auto;
-        justify-content: space-between;
-    }
-
-    .post {
-        background-color: #ADD8E6;
-        width: 500px;
-        margin: auto;
-        border-radius: 10px;
-    }
-
-    .post-wrapper {
-        width: 450px;
-        margin: auto;
-    }
-
-    body {
-        background: url(<%= image_path 'posts.png' %>) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-
-    body:after{
-        display:none;
-        content: url(<%= image_path 'posts.png' %>);
-    }
-
-    .avatar {
-        position: relative;
-        top: -50px;
-        left: -50px;
-    }
-</style>
+<%= stylesheet_link_tag "posts_common", media: "all", "data-turbolinks-track": "reload" %>
+<%= stylesheet_link_tag "posts_index", media: "all", "data-turbolinks-track": "reload" %>
 
 <main>
-
   <div style="width: fit-content; margin: auto;">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
@@ -78,5 +31,4 @@
   </div>
 
   <h5><%= link_to "#{ t '.new' }", new_post_path, class: 'btn btn-info' %></h5>
-
 </main>

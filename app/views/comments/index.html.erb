@@ -1,48 +1,5 @@
-<style>
-  main {
-  margin: 20px;
-  font-family: 'Noto Sans', sans-serif;
-  }
-
-  body {
-  background: url(<%= image_path 'comments2.png' %>) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  }
-
-  .post {
-      background-color: #ADD8E6;
-      width: 500px;
-      margin: auto;
-      border-radius: 10px;
-  }
-
-  .post-wrapper {
-      width: 450px;
-      margin: auto;
-  }
-
-  #comments {
-      background-color: #7393B3;
-      width: 330px;
-      border-radius: 10px;
-      margin: auto;
-      padding: 5px;
-  }
-
-  .comments-wrapper {
-      width: 300px;
-      margin: auto;
-      height: fit-content;
-  }
-
-  body:after{
-  display:none;
-  content: url(<%= image_path 'comments2.png' %>);
-  }
-</style>
+<%= stylesheet_link_tag 'comments_common', media: "all", "data-turbolinks-track": "reload" %>
+<%= stylesheet_link_tag 'comments_index', media: "all", "data-turbolinks-track": "reload" %>
 
 <script>
     function create_form() {
@@ -141,7 +98,7 @@
     }
 </script>
 
-<main>
+<main style="font-family: 'Noto Sans', sans-serif;">
 
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>" role="alert" style="width: fit-content">
@@ -165,7 +122,7 @@
   <% @comments.each do |comment| %>
     <%= render comment %>
       <div id="new_comment_section"></div>
-      <% if !@current_user.nil? && @current_user.nickname == comment.author %>
+      <% if !@current_user.nil? && (@current_user.nickname == comment.author || @current_user.is_admin) %>
         <div style="display: flex; flex-direction: row">
           <div style="margin-right: 10px"><%= link_to "#{ t '.edit' }", edit_comment_path(comment), class: 'btn btn-sm btn-info' %></div>
           <div><%= button_to "#{ t '.delete' }", comment, method: :delete, class: 'btn btn-danger btn-sm' %></div>

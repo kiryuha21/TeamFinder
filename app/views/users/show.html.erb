@@ -1,18 +1,4 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
-    main {
-        margin: 20px;
-        font-family: 'Noto Sans', sans-serif;
-    }
-    body {
-        background: url(<%= image_path 'form4.png' %>) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-</style>
+<%= stylesheet_link_tag "users_common", media: "all", "data-turbolinks-track": "reload" %>
 
 <main>
 
@@ -33,7 +19,7 @@
 
     <br>
 
-    <% if @current_user.nickname == @user.nickname %>
+    <% if @current_user.nickname == @user.nickname || @current_user.is_admin %>
       <%= button_to "#{ t '.del' }", user_path(@user), method: :delete, class: 'btn btn-danger' %>
     <% end %>
   </div>

@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag 'comments_common', media: "all", "data-turbolinks-track": "reload" %>
 <%= stylesheet_link_tag 'comments_edit', media: "all", "data-turbolinks-track": "reload" %>
 
-<main>
+<main style="text-align: center">
   <div class="comment-wrapper">
     <div class="comment">
-      <% if @current_user.nickname == @comment.author %>
+      <% if @current_user.nickname == @comment.author || @current_user.is_admin %>
           <h1><%= t '.edit_t' %></h1>
 
           <div style="margin: auto; width: fit-content">

@@ -3,6 +3,8 @@
 
   <div style="display: flex; flex-direction: row">
     <div style="margin-right: 10px;"> <%= link_to "#{ t '.edit' }", edit_comment_path(@comment), class: 'btn btn-info btn-sm' %> </div>
-    <div> <%= button_to "#{ t '.delete' }", @comment, method: :delete, class: 'btn btn-danger btn-sm' %> </div>
+    <% if @comment.author == @current_user.nickname || @current_user.is_admin %>
+      <div> <%= button_to "#{ t '.delete' }", @comment, method: :delete, class: 'btn btn-danger btn-sm' %> </div>
+    <% end %>
   </div>
 </div>
