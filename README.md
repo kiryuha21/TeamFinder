@@ -1,24 +1,19 @@
-# README
+# Зачетная работа
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+На данной ветке реализован сайт на RoR, воплощающий идею сайта для поиска товарищей для онлайн-игр.
 
-Things you may want to cover:
+___
 
-* Ruby version
+Несколько примеров работы сайта:
 
-* System dependencies
+![img.png](examples/img.png)
 
-* Configuration
+![img_3.png](examples/img_3.png)
 
-* Database creation
+![img_1.png](examples/img_1.png)
 
-* Database initialization
+![img_6.png](examples/img_6.png)
 
-* How to run the test suite
+![img_4.png](examples/img_4.png)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![img_5.png](examples/img_5.png)
